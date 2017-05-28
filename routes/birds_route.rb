@@ -22,7 +22,7 @@ class BirdsRoute < Sinatra::Application
     begin
       bird = Bird.new(json_params)
     rescue Mongoid::Errors::InvalidValue
-      status 400 and return
+      halt 400, { error: 'Invalid value' }.to_json
     end
     status bird.save ? 201 : 400
     body BirdSerializer.new(bird).to_json
@@ -62,7 +62,7 @@ class BirdsRoute < Sinatra::Application
       begin
         JSON.parse(request.body.read)
       rescue
-        halt 400, { message: 'Invalid JSON' }.to_json
+        halt 400, { error: 'Invalid JSON' }.to_json
       end
     end
 end
