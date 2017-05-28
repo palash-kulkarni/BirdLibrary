@@ -1,5 +1,5 @@
 How to run this application :
-- Take clone : git clone
+- Take clone : git clone git@github.com:palash-kulkarni/BirdLibrary.git
 - cd BirdLibrary
 - Install all dependencies : bundle
 - Start server : RACK_ENV=development rackup
